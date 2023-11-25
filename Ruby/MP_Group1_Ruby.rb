@@ -1,8 +1,8 @@
-********************
-Last names: Gilo
-Language: Ruby
-Paradigm(s): OOP, Procedral, Imperative, Modular, Scripting
-********************
+# ********************
+# Last names: Gilo
+# Language: Ruby
+# Paradigm(s): OOP, Procedral, Imperative, Modular, Scripting
+# ********************
 require 'date'
 
 # Constants
@@ -12,7 +12,7 @@ DEFAULT_SALARY = 500
 class Day
   attr_accessor :in_time, :out_time, :is_rest, :day_type
 
-  def initialize(in_time = "0900", out_time = "1800", is_rest = false, day_type = "Normal Day")
+  def initialize(in_time = "0900", out_time = "0900", is_rest = false, day_type = "Normal Day")
     @in_time = in_time
     @out_time = out_time
     @is_rest = is_rest
@@ -33,22 +33,22 @@ end
 
 # Function to calculate hours
 def calculate_hours(in_time, out_time)
-  in_dt = DateTime.strptime(in_time, '%H%M')
-  out_dt = DateTime.strptime(out_time, '%H%M')
+  in_datetime = DateTime.strptime(in_time, '%H%M')
+  out_datetime = DateTime.strptime(out_time, '%H%M')
   night_shift_start = 22
   night_shift_end = 6
 
   # Adjust out_dt if out time is on the next day
-  out_dt += 1 if out_dt <= in_dt
+  out_datetime += 1 if out_datetime <= in_datetime
 
-  overtime_start = in_dt + Rational(9, 24)
+  overtime_start = in_datetime + Rational(9, 24)
 
   overtime_hours = 0
   overtime_night_shift_hours = 0
   regular_night_shift_hours = 0
 
-  current_time = in_dt
-  while current_time < out_dt
+  current_time = in_datetime
+  while current_time < out_datetime
     if current_time >= overtime_start
       # Overtime calculation
       if current_time.hour >= night_shift_start || current_time.hour < night_shift_end
@@ -57,20 +57,17 @@ def calculate_hours(in_time, out_time)
         overtime_hours += 1
       end
     else
-      # Regular hours calculation
       if current_time.hour >= night_shift_start || current_time.hour < night_shift_end
         regular_night_shift_hours += 1
       end
     end
 
-    # Move to the next hour
     current_time += Rational(1, 24)
   end
 
   [overtime_hours, regular_night_shift_hours, overtime_night_shift_hours]
 end
 
-# Function to compute payroll
 def compute_payroll(days)
   weekly_salary = 0.0
 
@@ -87,7 +84,6 @@ def compute_payroll(days)
       puts " IN: #{day.in_time}\n OUT: #{day.out_time}\n DayType: #{day.day_type}\n IsRest: #{day.is_rest}"
       hourly_rate = DEFAULT_SALARY / 8.0
 
-      # Base Salary Calculation
       base_salary = case day.day_type
                     when "Normal Day"
                       day.is_rest ? DEFAULT_SALARY * 1.3 : DEFAULT_SALARY
@@ -96,7 +92,7 @@ def compute_payroll(days)
                     when "RH"
                       day.is_rest ? DEFAULT_SALARY * 2.6 : DEFAULT_SALARY * 2
                     else
-                      DEFAULT_SALARY # Default case
+                      DEFAULT_SALARY
                     end
 
       puts "Base Salary: #{'%.2f' % base_salary}"
@@ -127,8 +123,7 @@ def compute_payroll(days)
         daily_salary += ns
       end
 
-      # Overtime Night Shift Calculation
-      otns_rate = ot_rate * 1.10 # Overtime night shift rate
+      otns_rate = ot_rate * 1.10
       otns = overtime_night_shift_hours * otns_rate
       if overtime_night_shift_hours > 0
         puts "Overtime Night Shift: #{'%.2f' % otns}"
@@ -145,7 +140,6 @@ def compute_payroll(days)
   puts "Weekly Salary: #{'%.2f' % weekly_salary}\nPayroll Generated"
 end
 
-# Function to modify configuration
 def modify_configuration(days)
   loop do
     (1..7).each do |i|
