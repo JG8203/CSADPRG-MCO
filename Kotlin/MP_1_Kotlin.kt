@@ -6,13 +6,18 @@
 
 import java.util.*
 
-var daily = 500.0
-var maxHours = 8
-var regHours = 8
-var inHours = 9
-var outHoursMorning = 18
-var inHoursNight = 22
-var outHoursNight = 6
+import kotlin.Double
+import kotlin.Int
+
+
+var daily: Double = 500.0
+var maxHours: Int = 8
+var regHours: Int = 8
+var inHours: Int = 9
+var outHoursMorning: Int = 18
+var inHoursNight: Int = 22
+var outHoursNight: Int = 6
+
 
 fun modifyDefaultConfiguration() {
     println("\nModify Default Configuration:")
@@ -163,13 +168,13 @@ fun generateWeeklyPayroll() {
         var onsHours = 0
 
         print("Did you work on $day? Y/N: ")
-        val worked = scanner.next().toLowerCase()
+        val worked = scanner.next().lowercase(Locale.getDefault())
 
         if (worked == "y") {
             print("Was it night shift? Y/N: ")
-            if (scanner.next().toLowerCase() == "y") {
+            if (scanner.next().lowercase(Locale.getDefault()) == "y") {
                 nightShift = true
-                print("Enter your IN hours for this nightshift: ")
+                print("Enter your IN hours for this night shift: ")
                 inHours = scanner.nextInt()
             }
             if (!nightShift) {
@@ -179,51 +184,51 @@ fun generateWeeklyPayroll() {
             print("Enter OUT hours for day $day: ")
             var outHours = scanner.nextInt()
 
-            if (outHours <= 12 && outHours >= 0) {
+            if (outHours in 0..12) {
                 outHours += 24
             }
             workHours = (outHours - 1) - inHours
 
             print("You worked $workHours hours. Is this correct? Y/N: ")
-            if (scanner.next().toLowerCase() == "n") {
+            if (scanner.next().lowercase(Locale.getDefault()) == "n") {
                 print("Enter correct work hours for day $day: ")
                 workHours = scanner.nextInt()
             }
 
             if (nightShift) {
-                print("How many hours of nightshift worked: ")
+                print("How many hours of night shift worked: ")
                 nightHours = scanner.nextInt()
             }
 
             print("Was it a normal work day? Y/N: ")
-            if (scanner.next().toLowerCase() == "y") {
+            if (scanner.next().lowercase(Locale.getDefault()) == "y") {
                 norm = true
             } else {
                 print("Was it a rest work day? Y/N:")
-                if (scanner.next().toLowerCase() == "y") {
+                if (scanner.next().lowercase(Locale.getDefault()) == "y") {
                     rest = true
                 }
                 print("Was it a holiday work day? Y/N: ")
-                if (scanner.next().toLowerCase() == "y") {
+                if (scanner.next().lowercase(Locale.getDefault()) == "y") {
                     holiday = true
                 }
                 print("Was it a special non-working work day? Y/N: ")
-                if (scanner.next().toLowerCase() == "y") {
+                if (scanner.next().lowercase(Locale.getDefault()) == "y") {
                     snw = true
                 }
             }
 
             if (workHours > maxHours) {
                 print("Did you work overtime? Y/N: ")
-                if (scanner.next().toLowerCase() == "y") {
+                if (scanner.next().lowercase(Locale.getDefault()) == "y") {
                     overtime = true
                     print("How much overtime hours did you have: ")
                     overHours = scanner.nextInt()
 
-                    print("Did you work nightshift overtime? Y/N:")
-                    if (scanner.next().toLowerCase() == "y") {
+                    print("Did you work night shift overtime? Y/N:")
+                    if (scanner.next().lowercase(Locale.getDefault()) == "y") {
                         on = true
-                        print("How much overtime nightshift hours did you have: ")
+                        print("How much overtime night shift hours did you have: ")
                         onsHours = scanner.nextInt()
                     }
                 }
@@ -245,7 +250,7 @@ fun generateWeeklyPayroll() {
             on = false
         } else {
             print("Was it a rest work day? Y/N:")
-            val restAsk = scanner.next().toLowerCase()
+            val restAsk = scanner.next().lowercase(Locale.getDefault())
             val dailySalary = if (restAsk == "n") 0.0 else daily
             println("Day $day: Daily Salary - $dailySalary")
             totalSalary += dailySalary
@@ -296,4 +301,3 @@ fun menuDisplay() {
 fun main() {
     menu()
 }
-
