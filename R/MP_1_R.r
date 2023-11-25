@@ -1,3 +1,9 @@
+#********************
+#Last names: Arguelles, Atanacio, Gilo, Paguiligan
+#Language: R
+#Paradigm(s): functional
+#********************
+
 # Given defaults
 daily <- 500
 max_hours <- 8
