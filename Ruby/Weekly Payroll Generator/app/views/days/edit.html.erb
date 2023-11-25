@@ -1,0 +1,22 @@
+<h1>Edit Day</h1>
+<%= form_with(model: [@employee, @day], local: true) do |form| %>
+  <div>
+    <%= form.label :in_time %><br>
+    <%= form.text_field :in_time %>
+  </div>
+  <div>
+    <%= form.label :out_time %><br>
+    <%= form.text_field :out_time %>
+  </div>
+  <div>
+    <%= form.label :is_rest %><br>
+    <%= form.check_box :is_rest %>
+  </div>
+  <div>
+    <%= form.label :day_type %><br>
+    <%= form.text_field :day_type %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
