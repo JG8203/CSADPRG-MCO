@@ -82,7 +82,7 @@
     <tr class="bg-gray-100">
       <td class="px-5 py-5 border-b border-gray-200 text-sm font-semibold" colspan="5">Weekly Totals</td>
       <td class="px-5 py-5 border-b border-gray-200 text-sm">
-        <%= number_to_currency(weekly_totals[:salary]) %>
+        <%= number_to_currency(weekly_totals[:salary], unit: "₱") %>
       </td>
       <td class="px-5 py-5 border-b border-gray-200 text-sm">
         <%= weekly_totals[:hours] %> hrs
@@ -98,6 +98,7 @@
   </table>
 
   <div class="px-5 py-4 bg-gray-100 text-right">
-    <strong>Total Weekly Salary: <%= number_to_currency(@total_salary) %></strong>
+    <strong>Total Weekly Salary: <%= number_to_currency(@total_salary, unit: "₱") %></strong>
+
   </div>
 </div>
