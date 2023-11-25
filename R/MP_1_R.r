@@ -1,3 +1,9 @@
+#********************
+#Last names: Arguelles, Atanacio, Gilo, Paguiligan
+#Language: R
+#Paradigm(s): functional
+#********************
+
 # Given defaults
 daily <- 500
 max_hours <- 8
@@ -81,8 +87,7 @@ calculate_salary <- function(norm, rest, holiday, is_snw, night_shift, overtime,
       if(overtime){over <- (hourly * 1.25) * over_hours }
       if (on) {over_on <- (hourly * 1.375) * ons_hours  }
     }
-    #normal <- 500
-    
+      
   }
   
   #rest or snw:>
