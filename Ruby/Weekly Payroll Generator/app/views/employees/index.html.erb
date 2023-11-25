@@ -31,7 +31,7 @@
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <%= link_to 'Edit', edit_employee_path(employee), class: "text-indigo-600 hover:text-indigo-900" %> |
-          <%= link_to 'Destroy', employee_path(employee), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-600 hover:text-red-900" %>
+          <%= link_to 'Destroy', employee_path(employee), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-600 hover:text-red-900" %>
         </td>
       </tr>
     <% end %>

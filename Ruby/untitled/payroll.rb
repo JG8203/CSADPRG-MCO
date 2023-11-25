@@ -32,22 +32,30 @@ module TimeHelper
   def self.calculate_hours(in_time, out_time)
     in_dt = DateTime.strptime(in_time, '%H%M')
     out_dt = DateTime.strptime(out_time, '%H%M')
+    # Define night shift hours using DateTime objects
     night_shift_start = DateTime.strptime("2200", '%H%M').hour
     night_shift_end = DateTime.strptime("0600", '%H%M').hour
+    # Define overtime start as 9 hours after in_time
     overtime_start = in_dt + Rational(9, 24)
 
+    # Adjust out_dt if out time is on the next day
     out_dt += 1 if out_dt < in_dt
 
+    # Initialize counters for different types of hours
     overtime_hours = 0
     regular_night_shift_hours = 0
     overtime_night_shift_hours = 0
 
+    # Iterate over each hour from in_time to out_time
     current_time = in_dt
     while current_time < out_dt
       hour_of_day = current_time.hour
-      is_night_shift = (hour_of_day >= night_shift_start || hour_of_day < night_shift_end)
+      # Determine if current hour is during night shift
+      is_night_shift = hour_of_day >= night_shift_start || hour_of_day < night_shift_end
+      # Determine if current hour is overtime
       is_overtime = current_time >= overtime_start
 
+      # Increment counters based on whether it's night shift, overtime, or both
       if is_night_shift
         if is_overtime
           overtime_night_shift_hours += 1
@@ -58,9 +66,11 @@ module TimeHelper
         overtime_hours += 1
       end
 
+      # Move to the next hour
       current_time += Rational(1, 24)
     end
 
+    # Return an array with the counted hours
     [overtime_hours, regular_night_shift_hours, overtime_night_shift_hours]
   end
 end
