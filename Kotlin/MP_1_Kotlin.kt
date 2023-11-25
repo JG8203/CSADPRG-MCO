@@ -1,3 +1,9 @@
+/********************
+#Last names: Arguelles, Atanacio, Gilo, Paguiligan
+#Language: Kotlin
+#Paradigm(s): Functional, Imperative, Object-oriented, or Procedural programming
+********************/
+
 import java.util.*
 
 var daily = 500.0
