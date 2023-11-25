@@ -7819,3 +7819,1367 @@ Processing by EmployeesController#generate_payroll as TURBO_STREAM
 Completed 200 OK in 25ms (Views: 15.7ms | ActiveRecord: 0.1ms | Allocations: 15027)
 
 
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:02:38 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (13.7ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:21
+  Rendered employees/index.html.erb within layouts/application (Duration: 34.7ms | Allocations: 1348)
+  Rendered layout layouts/application.html.erb (Duration: 56.8ms | Allocations: 9639)
+Completed 200 OK in 71ms (Views: 40.5ms | ActiveRecord: 21.7ms | Allocations: 9950)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:02:40 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 4.0ms | Allocations: 780)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 12.4ms | Allocations: 950)
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 9015)
+Completed 200 OK in 33ms (Views: 25.3ms | ActiveRecord: 0.2ms | Allocations: 9913)
+
+
+Started PATCH "/employees/12" for 127.0.0.1 at 2023-11-25 22:02:41 +0800
+Processing by EmployeesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "employee"=>{"name"=>"Joshua Gilo", "daily_salary"=>"500.0"}, "commit"=>"Submit", "id"=>"12"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:30:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 8ms (ActiveRecord: 0.2ms | Allocations: 1217)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:02:41 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 236)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:02:41 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.3ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1332)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 9616)
+Completed 200 OK in 21ms (Views: 13.9ms | ActiveRecord: 0.4ms | Allocations: 11571)
+
+
+Started GET "/employees/12/days/83/edit" for 127.0.0.1 at 2023-11-25 22:07:17 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.0ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1933)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 26777)
+Completed 200 OK in 71ms (Views: 27.5ms | ActiveRecord: 7.6ms | Allocations: 42391)
+
+
+Started PATCH "/employees/12/days/83" for 127.0.0.1 at 2023-11-25 22:07:20 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"0900", "is_rest"=>"1", "day_type"=>"RH"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (2.1ms)[0m  [1m[33mUPDATE "days" SET "day_type" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["day_type", "RH"], ["updated_at", "2023-11-25 14:07:20.983512"], ["id", 83]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 24ms (ActiveRecord: 2.9ms | Allocations: 4226)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:07:20 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 788)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:07:21 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2168)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 10651)
+Completed 200 OK in 17ms (Views: 11.2ms | ActiveRecord: 0.2ms | Allocations: 13742)
+
+
+Started GET "/employees/12/days/83/edit" for 127.0.0.1 at 2023-11-25 22:07:24 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1275)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 9340)
+Completed 200 OK in 24ms (Views: 18.5ms | ActiveRecord: 0.3ms | Allocations: 10962)
+
+
+Started PATCH "/employees/12/days/83" for 127.0.0.1 at 2023-11-25 22:07:26 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"0900", "is_rest"=>"1", "day_type"=>"SNWH"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (0.7ms)[0m  [1m[33mUPDATE "days" SET "day_type" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["day_type", "SNWH"], ["updated_at", "2023-11-25 14:07:26.765994"], ["id", 83]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 15ms (ActiveRecord: 1.4ms | Allocations: 3907)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:07:26 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:07:26 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.0ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1332)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 9626)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 0.1ms | Allocations: 11548)
+
+
+Started GET "/employees/12/days/83/edit" for 127.0.0.1 at 2023-11-25 22:07:28 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1252)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 9327)
+Completed 200 OK in 24ms (Views: 18.6ms | ActiveRecord: 0.4ms | Allocations: 10936)
+
+
+Started PATCH "/employees/12/days/83" for 127.0.0.1 at 2023-11-25 22:07:31 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"0900", "is_rest"=>"1", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.8ms)[0m  [1m[33mUPDATE "days" SET "day_type" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["day_type", "Normal Day"], ["updated_at", "2023-11-25 14:07:31.537403"], ["id", 83]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 24ms (ActiveRecord: 2.6ms | Allocations: 3811)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:07:31 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:07:31 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1332)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 9649)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 0.1ms | Allocations: 11565)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:15:07 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (5.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2317)
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 27348)
+Completed 200 OK in 44ms (Views: 20.9ms | ActiveRecord: 7.6ms | Allocations: 42544)
+
+
+Started GET "/employees/12/days/78/edit" for 127.0.0.1 at 2023-11-25 22:15:16 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"78"}
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.7ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 78], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 8.9ms | Allocations: 1883)
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 10068)
+Completed 200 OK in 49ms (Views: 39.5ms | ActiveRecord: 1.1ms | Allocations: 12191)
+
+
+Started PATCH "/employees/12/days/78" for 127.0.0.1 at 2023-11-25 22:15:19 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"2300", "is_rest"=>"0", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"78"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 78], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.4ms)[0m  [1m[33mUPDATE "days" SET "out_time" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["out_time", "2300"], ["updated_at", "2023-11-25 14:15:19.667805"], ["id", 78]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 12ms (ActiveRecord: 2.1ms | Allocations: 4077)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:15:19 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:15:19 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.0ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1381)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 9725)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.1ms | Allocations: 12408)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:15:43 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2181)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 27327)
+Completed 200 OK in 34ms (Views: 17.6ms | ActiveRecord: 2.5ms | Allocations: 44205)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:17:50 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.2ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2242)
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 27292)
+Completed 200 OK in 61ms (Views: 25.2ms | ActiveRecord: 11.8ms | Allocations: 44097)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:18:19 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2237)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 27381)
+Completed 200 OK in 25ms (Views: 14.3ms | ActiveRecord: 1.3ms | Allocations: 44278)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:18:20 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:21
+  Rendered employees/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1564)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 9878)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.2ms | Allocations: 10271)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:19:41 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:21
+  Rendered employees/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 4716)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 29878)
+Completed 200 OK in 24ms (Views: 19.2ms | ActiveRecord: 1.1ms | Allocations: 33442)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:19:43 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 6.9ms | Allocations: 1317)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1551)
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 9616)
+Completed 200 OK in 43ms (Views: 34.8ms | ActiveRecord: 0.5ms | Allocations: 11188)
+
+
+Started PATCH "/employees/12" for 127.0.0.1 at 2023-11-25 22:19:45 +0800
+Processing by EmployeesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "employee"=>{"name"=>"Joshua Gilo", "daily_salary"=>"500.0"}, "commit"=>"Submit", "id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:30:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 11ms (ActiveRecord: 0.1ms | Allocations: 1410)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:19:45 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 743)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:19:45 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2222)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 10719)
+Completed 200 OK in 28ms (Views: 11.2ms | ActiveRecord: 0.6ms | Allocations: 20814)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:24:02 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.2ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2248)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 27401)
+Completed 200 OK in 39ms (Views: 20.5ms | ActiveRecord: 6.1ms | Allocations: 44286)
+
+
+Started GET "/employees/12/days/78/edit" for 127.0.0.1 at 2023-11-25 22:24:05 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"78"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.2ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 78], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1871)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 10040)
+Completed 200 OK in 21ms (Views: 14.5ms | ActiveRecord: 0.4ms | Allocations: 12162)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:24:08 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 3.1ms | Allocations: 1269)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1503)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 9568)
+Completed 200 OK in 17ms (Views: 11.2ms | ActiveRecord: 0.5ms | Allocations: 10441)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:24:08 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:21
+  Rendered employees/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1499)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 9801)
+Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 0.2ms | Allocations: 10176)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:24:12 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.2ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1272)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 9569)
+Completed 200 OK in 20ms (Views: 12.8ms | ActiveRecord: 0.3ms | Allocations: 12194)
+
+
+Started GET "/employees/13/edit" for 127.0.0.1 at 2023-11-25 22:24:14 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 4.4ms | Allocations: 777)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 4.8ms | Allocations: 836)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 8910)
+Completed 200 OK in 38ms (Views: 19.7ms | ActiveRecord: 0.6ms | Allocations: 9722)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:24:18 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 2.0ms | Allocations: 786)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 845)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 8910)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.1ms | Allocations: 9721)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:24:25 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 3.5ms | Allocations: 777)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 3.9ms | Allocations: 836)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 8901)
+Completed 200 OK in 31ms (Views: 13.8ms | ActiveRecord: 0.5ms | Allocations: 9712)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:24:41 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 1.8ms | Allocations: 1522)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1815)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 26657)
+Completed 200 OK in 23ms (Views: 16.2ms | ActiveRecord: 2.5ms | Allocations: 34475)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:24:43 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:21
+  Rendered employees/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1582)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 9901)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.2ms | Allocations: 10293)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:24:44 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2210)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 10699)
+Completed 200 OK in 21ms (Views: 6.8ms | ActiveRecord: 0.8ms | Allocations: 20773)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:24:46 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 2.4ms | Allocations: 849)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 2.7ms | Allocations: 912)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 8977)
+Completed 200 OK in 17ms (Views: 13.3ms | ActiveRecord: 0.2ms | Allocations: 9806)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2023-11-25 22:24:48 +0800
+Processing by EmployeesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 2.3ms | Allocations: 752)
+  Rendered employees/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 942)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 9013)
+Completed 200 OK in 19ms (Views: 16.6ms | ActiveRecord: 0.0ms | Allocations: 9401)
+
+
+Started GET "/employees/12/days/78/edit" for 127.0.0.1 at 2023-11-25 22:24:54 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"78"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.3ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 78], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1841)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 10023)
+Completed 200 OK in 21ms (Views: 11.9ms | ActiveRecord: 0.5ms | Allocations: 12141)
+
+
+Started GET "/employees/12/days/83/edit" for 127.0.0.1 at 2023-11-25 22:24:56 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1228)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 9302)
+Completed 200 OK in 18ms (Views: 14.9ms | ActiveRecord: 0.1ms | Allocations: 10912)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:26:09 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:24
+  Rendered employees/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 4748)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 29916)
+Completed 200 OK in 22ms (Views: 17.6ms | ActiveRecord: 1.0ms | Allocations: 33484)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:26:14 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2210)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 10710)
+Completed 200 OK in 45ms (Views: 18.5ms | ActiveRecord: 1.1ms | Allocations: 21363)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:26:22 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1272)
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | Allocations: 9566)
+Completed 200 OK in 39ms (Views: 23.4ms | ActiveRecord: 0.6ms | Allocations: 12200)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:26:25 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1272)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 9571)
+Completed 200 OK in 22ms (Views: 16.8ms | ActiveRecord: 0.2ms | Allocations: 12189)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:26:31 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1272)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 9548)
+Completed 200 OK in 18ms (Views: 10.8ms | ActiveRecord: 0.5ms | Allocations: 12163)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:26:37 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:24
+  Rendered employees/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 1051)
+  Rendered layout layouts/application.html.erb (Duration: 18.6ms | Allocations: 9352)
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 0.3ms | Allocations: 9665)
+
+
+Started GET "/employees/13/edit" for 127.0.0.1 at 2023-11-25 22:26:40 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 5.0ms | Allocations: 1351)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1608)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 9686)
+Completed 200 OK in 22ms (Views: 18.0ms | ActiveRecord: 0.1ms | Allocations: 10559)
+
+
+Started GET "/employees/13/edit" for 127.0.0.1 at 2023-11-25 22:26:59 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 1.1ms | Allocations: 1516)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1809)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 26666)
+Completed 200 OK in 22ms (Views: 14.6ms | ActiveRecord: 1.7ms | Allocations: 34526)
+
+
+Started GET "/employees/13/edit" for 127.0.0.1 at 2023-11-25 22:27:11 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 3.2ms | Allocations: 786)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 3.5ms | Allocations: 845)
+  Rendered layout layouts/application.html.erb (Duration: 20.3ms | Allocations: 8919)
+Completed 200 OK in 27ms (Views: 21.4ms | ActiveRecord: 0.4ms | Allocations: 9810)
+
+
+Started GET "/employees/13/edit" for 127.0.0.1 at 2023-11-25 22:27:12 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 2.0ms | Allocations: 780)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 839)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 8915)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.1ms | Allocations: 9726)
+
+
+Started GET "/employees/13/edit" for 127.0.0.1 at 2023-11-25 22:27:36 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 14.7ms | Allocations: 795)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 15.4ms | Allocations: 854)
+  Rendered layout layouts/application.html.erb (Duration: 27.0ms | Allocations: 8926)
+Completed 200 OK in 34ms (Views: 27.8ms | ActiveRecord: 0.4ms | Allocations: 9736)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:28:57 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:24
+  Rendered employees/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1553)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 9864)
+Completed 200 OK in 24ms (Views: 20.6ms | ActiveRecord: 0.3ms | Allocations: 10241)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:29:00 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 3.3ms | Allocations: 780)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 3.6ms | Allocations: 839)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 8904)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.2ms | Allocations: 9715)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2023-11-25 22:29:02 +0800
+Processing by EmployeesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 2.4ms | Allocations: 740)
+  Rendered employees/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 929)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 9011)
+Completed 200 OK in 20ms (Views: 17.0ms | ActiveRecord: 0.0ms | Allocations: 9399)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:29:05 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.4ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2210)
+  Rendered layout layouts/application.html.erb (Duration: 47.4ms | Allocations: 10684)
+Completed 200 OK in 86ms (Views: 50.8ms | ActiveRecord: 1.1ms | Allocations: 23690)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:30:51 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 2.9ms | Allocations: 1510)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1803)
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 26658)
+Completed 200 OK in 27ms (Views: 18.1ms | ActiveRecord: 5.9ms | Allocations: 34519)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:31:03 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 1.8ms | Allocations: 1485)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1774)
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 26508)
+Completed 200 OK in 27ms (Views: 18.4ms | ActiveRecord: 1.7ms | Allocations: 34354)
+
+
+Started GET "/" for 127.0.0.1 at 2023-11-25 22:31:19 +0800
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:24
+  Rendered employees/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 4724)
+  Rendered layout layouts/application.html.erb (Duration: 20.3ms | Allocations: 29750)
+Completed 200 OK in 26ms (Views: 20.4ms | ActiveRecord: 1.7ms | Allocations: 33308)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:31:21 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 4.4ms | Allocations: 1322)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1556)
+  Rendered layout layouts/application.html.erb (Duration: 29.9ms | Allocations: 9629)
+Completed 200 OK in 36ms (Views: 30.5ms | ActiveRecord: 0.3ms | Allocations: 11202)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:31:28 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 1.3ms | Allocations: 1512)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1782)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 26625)
+Completed 200 OK in 22ms (Views: 14.9ms | ActiveRecord: 1.2ms | Allocations: 34485)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 22:31:36 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 1.6ms | Allocations: 1488)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1754)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 26484)
+Completed 200 OK in 23ms (Views: 14.9ms | ActiveRecord: 1.5ms | Allocations: 34329)
+
+
+Started PATCH "/employees/12" for 127.0.0.1 at 2023-11-25 22:31:39 +0800
+Processing by EmployeesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "employee"=>{"name"=>"Joshua Gilo", "daily_salary"=>"500.0"}, "commit"=>"Submit", "id"=>"12"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:30:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 8ms (ActiveRecord: 0.2ms | Allocations: 1478)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:31:39 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 798)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:31:39 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.3ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2220)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 10694)
+Completed 200 OK in 26ms (Views: 10.9ms | ActiveRecord: 0.7ms | Allocations: 20792)
+
+
+Started GET "/employees/12/days/78/edit" for 127.0.0.1 at 2023-11-25 22:32:17 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"78"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 78], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1920)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 10096)
+Completed 200 OK in 21ms (Views: 14.1ms | ActiveRecord: 0.4ms | Allocations: 12218)
+
+
+Started PATCH "/employees/12/days/78" for 127.0.0.1 at 2023-11-25 22:32:28 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"1800", "is_rest"=>"0", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"78"}
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 78], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.8ms)[0m  [1m[33mUPDATE "days" SET "out_time" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["out_time", "1800"], ["updated_at", "2023-11-25 14:32:28.701364"], ["id", 78]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 19ms (ActiveRecord: 2.7ms | Allocations: 4059)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:32:28 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 242)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:32:28 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 16.9ms | Allocations: 1294)
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 9609)
+Completed 200 OK in 30ms (Views: 25.6ms | ActiveRecord: 0.1ms | Allocations: 12032)
+
+
+Started GET "/employees/12/days/79/edit" for 127.0.0.1 at 2023-11-25 22:32:35 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"79"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 79], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1251)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 9316)
+Completed 200 OK in 30ms (Views: 18.3ms | ActiveRecord: 0.6ms | Allocations: 10926)
+
+
+Started PATCH "/employees/12/days/79" for 127.0.0.1 at 2023-11-25 22:32:43 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"2100", "is_rest"=>"0", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"79"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 79], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (2.4ms)[0m  [1m[33mUPDATE "days" SET "out_time" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["out_time", "2100"], ["updated_at", "2023-11-25 14:32:43.195994"], ["id", 79]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 15ms (ActiveRecord: 3.1ms | Allocations: 3797)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:32:43 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:32:43 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1270)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 9590)
+Completed 200 OK in 16ms (Views: 11.6ms | ActiveRecord: 0.1ms | Allocations: 12601)
+
+
+Started GET "/employees/12/days/80/edit" for 127.0.0.1 at 2023-11-25 22:32:50 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"80"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 80], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1260)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 9340)
+Completed 200 OK in 22ms (Views: 15.2ms | ActiveRecord: 0.3ms | Allocations: 10949)
+
+
+Started PATCH "/employees/12/days/80" for 127.0.0.1 at 2023-11-25 22:33:11 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"0000", "is_rest"=>"0", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"80"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 80], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.0ms)[0m  [1m[33mUPDATE "days" SET "out_time" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["out_time", "0000"], ["updated_at", "2023-11-25 14:33:11.980833"], ["id", 80]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 19ms (ActiveRecord: 1.9ms | Allocations: 3809)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:33:11 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:33:12 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1263)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 9579)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.1ms | Allocations: 13325)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:36:07 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2240)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 27379)
+Completed 200 OK in 34ms (Views: 20.0ms | ActiveRecord: 1.6ms | Allocations: 45384)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:37:36 +0800
+Processing by EmployeesController#generate_payroll as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.0ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2244)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 27402)
+Completed 200 OK in 35ms (Views: 18.5ms | ActiveRecord: 5.7ms | Allocations: 45368)
+
+
+Started GET "/employees/12/days/81/edit" for 127.0.0.1 at 2023-11-25 22:39:11 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"81"}
+  [1m[36mEmployee Load (1.9ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (1.8ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 81], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1927)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 10112)
+Completed 200 OK in 26ms (Views: 15.6ms | ActiveRecord: 3.7ms | Allocations: 12234)
+
+
+Started PATCH "/employees/12/days/81" for 127.0.0.1 at 2023-11-25 22:39:19 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"1800", "out_time"=>"0300", "is_rest"=>"0", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"81"}
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 81], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.9ms)[0m  [1m[33mUPDATE "days" SET "in_time" = ?, "out_time" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["in_time", "1800"], ["out_time", "0300"], ["updated_at", "2023-11-25 14:39:19.142091"], ["id", 81]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 20ms (ActiveRecord: 3.0ms | Allocations: 4078)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:39:19 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 817)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:39:19 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.4ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1275)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 9573)
+Completed 200 OK in 18ms (Views: 12.8ms | ActiveRecord: 0.4ms | Allocations: 13861)
+
+
+Started GET "/employees/12/days/82/edit" for 127.0.0.1 at 2023-11-25 22:39:26 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"82"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 82], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1260)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 9325)
+Completed 200 OK in 22ms (Views: 14.8ms | ActiveRecord: 0.3ms | Allocations: 10934)
+
+
+Started PATCH "/employees/12/days/82" for 127.0.0.1 at 2023-11-25 22:39:33 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"1800", "is_rest"=>"0", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"82"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 82], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.4ms)[0m  [1m[33mUPDATE "days" SET "out_time" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["out_time", "1800"], ["updated_at", "2023-11-25 14:39:33.961377"], ["id", 82]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 12ms (ActiveRecord: 2.1ms | Allocations: 3806)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:39:33 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:39:33 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1253)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 9554)
+Completed 200 OK in 15ms (Views: 10.1ms | ActiveRecord: 0.1ms | Allocations: 14258)
+
+
+Started GET "/employees/12/days/82/edit" for 127.0.0.1 at 2023-11-25 22:39:42 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"82"}
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.0ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 82], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1239)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 9317)
+Completed 200 OK in 26ms (Views: 17.1ms | ActiveRecord: 0.4ms | Allocations: 10926)
+
+
+Started PATCH "/employees/12/days/82" for 127.0.0.1 at 2023-11-25 22:39:51 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"1800", "is_rest"=>"0", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"82"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 82], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 7ms (ActiveRecord: 0.2ms | Allocations: 1946)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:39:51 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:39:51 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.8ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1253)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 9579)
+Completed 200 OK in 17ms (Views: 11.2ms | ActiveRecord: 0.9ms | Allocations: 14284)
+
+
+Started GET "/employees/12/days/82/edit" for 127.0.0.1 at 2023-11-25 22:39:56 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"82"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 82], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1239)
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 9304)
+Completed 200 OK in 37ms (Views: 19.2ms | ActiveRecord: 0.4ms | Allocations: 10913)
+
+
+Started PATCH "/employees/12/days/82" for 127.0.0.1 at 2023-11-25 22:39:58 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"1800", "is_rest"=>"1", "day_type"=>"Normal Day"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"82"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 82], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.3ms)[0m  [1m[33mUPDATE "days" SET "is_rest" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["is_rest", 1], ["updated_at", "2023-11-25 14:39:58.774728"], ["id", 82]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 12ms (ActiveRecord: 2.4ms | Allocations: 3816)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:39:58 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:39:58 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1253)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 9567)
+Completed 200 OK in 19ms (Views: 12.7ms | ActiveRecord: 0.2ms | Allocations: 14277)
+
+
+Started GET "/employees/12/days/83/edit" for 127.0.0.1 at 2023-11-25 22:40:00 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1276)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 9354)
+Completed 200 OK in 20ms (Views: 14.8ms | ActiveRecord: 0.3ms | Allocations: 10963)
+
+
+Started PATCH "/employees/12/days/83" for 127.0.0.1 at 2023-11-25 22:40:07 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"2300234", "is_rest"=>"1", "day_type"=>"SNWH"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.7ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.5ms)[0m  [1m[33mUPDATE "days" SET "out_time" = ?, "day_type" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["out_time", "2300234"], ["day_type", "SNWH"], ["updated_at", "2023-11-25 14:40:07.275476"], ["id", 83]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 30ms (ActiveRecord: 3.0ms | Allocations: 3799)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:40:07 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:40:07 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1257)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 9553)
+Completed 200 OK in 15ms (Views: 10.9ms | ActiveRecord: 0.1ms | Allocations: 14961)
+
+
+Started GET "/employees/12/days/83/edit" for 127.0.0.1 at 2023-11-25 22:40:09 +0800
+Processing by DaysController#edit as HTML
+  Parameters: {"employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:8:in `edit'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:9:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering days/edit.html.erb within layouts/application
+  Rendered days/edit.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1264)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 9345)
+Completed 200 OK in 22ms (Views: 15.6ms | ActiveRecord: 0.3ms | Allocations: 10954)
+
+
+Started PATCH "/employees/12/days/83" for 127.0.0.1 at 2023-11-25 22:40:12 +0800
+Processing by DaysController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "day"=>{"in_time"=>"0900", "out_time"=>"2300", "is_rest"=>"1", "day_type"=>"SNWH"}, "commit"=>"Submit", "employee_id"=>"12", "id"=>"83"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:13:in `update'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ? AND "days"."id" = ? LIMIT ?[0m  [["employee_id", 12], ["id", 83], ["LIMIT", 1]]
+  ↳ app/controllers/days_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mDay Update (1.4ms)[0m  [1m[33mUPDATE "days" SET "out_time" = ?, "updated_at" = ? WHERE "days"."id" = ?[0m  [["out_time", "2300"], ["updated_at", "2023-11-25 14:40:12.796066"], ["id", 83]]
+  ↳ app/controllers/days_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/days_controller.rb:16:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 10ms (ActiveRecord: 1.7ms | Allocations: 3791)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 22:40:12 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 22:40:12 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.0ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1257)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 9558)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 0.1ms | Allocations: 14959)
+
+
