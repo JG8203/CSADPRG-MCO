@@ -7819,3 +7819,64 @@ Processing by EmployeesController#generate_payroll as TURBO_STREAM
 Completed 200 OK in 25ms (Views: 15.7ms | ActiveRecord: 0.1ms | Allocations: 15027)
 
 
+Started GET "/" for 127.0.0.1 at 2023-11-25 23:18:09 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EmployeesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:21
+  Rendered employees/index.html.erb within layouts/application (Duration: 48.9ms | Allocations: 78054)
+  Rendered layout layouts/application.html.erb (Duration: 90.6ms | Allocations: 142073)
+Completed 200 OK in 105ms (Views: 88.4ms | ActiveRecord: 4.4ms | Allocations: 163095)
+
+
+Started GET "/employees/12/edit" for 127.0.0.1 at 2023-11-25 23:18:11 +0800
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:26:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (Duration: 15.3ms | Allocations: 2696)
+  Rendered employees/edit.html.erb within layouts/application (Duration: 16.9ms | Allocations: 3014)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 11203)
+Completed 200 OK in 29ms (Views: 21.9ms | ActiveRecord: 0.3ms | Allocations: 14394)
+
+
+Started PATCH "/employees/12" for 127.0.0.1 at 2023-11-25 23:18:14 +0800
+Processing by EmployeesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "employee"=>{"name"=>"Joshua Gilo", "daily_salary"=>"0"}, "commit"=>"Submit", "id"=>"12"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/employees_controller.rb:31:in `update'
+  [1m[36mEmployee Update (1.7ms)[0m  [1m[33mUPDATE "employees" SET "updated_at" = ?, "daily_salary" = ? WHERE "employees"."id" = ?[0m  [["updated_at", "2023-11-25 15:18:14.857818"], ["daily_salary", 0.0], ["id", 12]]
+  ↳ app/controllers/employees_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/employees_controller.rb:31:in `update'
+Redirected to http://0.0.0.0:3000/employees/12
+Completed 302 Found in 10ms (ActiveRecord: 2.3ms | Allocations: 4834)
+
+
+Started GET "/employees/12" for 127.0.0.1 at 2023-11-25 23:18:14 +0800
+Processing by EmployeesController#show as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+Redirected to http://0.0.0.0:3000/employees/12/generate_payroll
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 756)
+
+
+Started GET "/employees/12/generate_payroll" for 127.0.0.1 at 2023-11-25 23:18:14 +0800
+Processing by EmployeesController#generate_payroll as TURBO_STREAM
+  Parameters: {"id"=>"12"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:47:in `generate_payroll'
+  [1m[36mDay Load (0.1ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."employee_id" = ?[0m  [["employee_id", 12]]
+  ↳ app/models/employee.rb:14:in `each_with_index'
+  Rendering layout layouts/application.html.erb
+  Rendering employees/generate_payroll.html.erb within layouts/application
+  Rendered employees/generate_payroll.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2192)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 10677)
+Completed 200 OK in 37ms (Views: 7.2ms | ActiveRecord: 0.5ms | Allocations: 85657)
+
+
